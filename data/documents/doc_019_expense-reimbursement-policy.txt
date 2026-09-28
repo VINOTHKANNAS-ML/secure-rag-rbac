@@ -1,0 +1,4 @@
+Title: Expense Reimbursement Policy
+Department: Finance
+
+Employees must submit expense reports within 30 days of purchase using the finance portal. Receipts are required for any expense over 25 USD. Travel expenses should follow the approved per-diem rates listed in the travel policy appendix.

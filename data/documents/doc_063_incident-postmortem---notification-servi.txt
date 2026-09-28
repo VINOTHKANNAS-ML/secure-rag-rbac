@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Notification Service (July)
+Department: Engineering
+
+On July 22, queue depth on the notification service rose to 2% due to a database connection pool exhaustion during a traffic spike. The fix involved rightsizing the autoscaling thresholds and adding a warm pool, reducing average result set size by 90%.

@@ -1,0 +1,4 @@
+Title: Internal Wiki Usage Guidelines
+Department: General
+
+The internal wiki hosts engineering runbooks, HR policies, and finance templates. Employees should tag pages with the correct department and confidentiality level. Content marked Internal is visible to all employees but must never be shared with external parties.

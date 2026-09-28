@@ -1,0 +1,4 @@
+Title: Sprint 5 Notes - Search Relevance Team
+Department: Engineering
+
+Sprint 5 for the Search Relevance team focused on hardening the RBAC filtering logic with additional test coverage. 24 story points were completed against a commitment of 34. Key blockers included pending security review sign-off, which is being tracked as a follow-up for next sprint.

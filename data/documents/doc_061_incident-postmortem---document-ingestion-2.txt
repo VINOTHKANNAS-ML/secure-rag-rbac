@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Document Ingestion Pipeline (May)
+Department: Engineering
+
+On May 28, error rate on the document ingestion pipeline rose to 4% due to a database connection pool exhaustion during a traffic spike. The fix involved patching the cache eviction logic and adding memory alerts, reducing average result set size by 90%.

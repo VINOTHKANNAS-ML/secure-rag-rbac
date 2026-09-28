@@ -1,0 +1,4 @@
+Title: Sprint 2 Notes - Search Relevance Team
+Department: Engineering
+
+Sprint 2 for the Search Relevance team focused on migrating the embedding pipeline to a newer model version. 45 story points were completed against a commitment of 45. Key blockers included a delayed API contract from the identity team, which is being tracked as a follow-up for next sprint.

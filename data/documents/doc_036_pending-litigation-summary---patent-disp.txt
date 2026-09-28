@@ -1,0 +1,4 @@
+Title: Pending Litigation Summary - Patent Dispute
+Department: Legal
+
+The company is named in a pending patent infringement suit filed by a competitor regarding vector-search indexing methods. Outside counsel estimates exposure between 2 and 8 million USD; this restricted summary is privileged and confidential attorney work product.

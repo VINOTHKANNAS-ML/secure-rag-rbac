@@ -1,0 +1,4 @@
+Title: Open Source License Compliance Policy
+Department: Legal
+
+Engineering teams must run license scans before adopting new dependencies. Copyleft licenses such as AGPL require Legal review before use in any shipped product to avoid unintended disclosure obligations.

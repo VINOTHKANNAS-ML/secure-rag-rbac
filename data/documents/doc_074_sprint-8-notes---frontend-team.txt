@@ -1,0 +1,4 @@
+Title: Sprint 8 Notes - Frontend Team
+Department: Engineering
+
+Sprint 8 for the Frontend team focused on migrating the embedding pipeline to a newer model version. 36 story points were completed against a commitment of 44. Key blockers included pending security review sign-off, which is being tracked as a follow-up for next sprint.

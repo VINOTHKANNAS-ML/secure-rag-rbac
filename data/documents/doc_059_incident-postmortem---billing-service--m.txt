@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Billing Service (March)
+Department: Engineering
+
+On March 5, queue depth on the billing service rose to 6% due to a memory leak in the embedding cache. The fix involved patching the cache eviction logic and adding memory alerts, eliminating repeat occurrences over the following month.

@@ -1,0 +1,4 @@
+Title: Coding Standards and Style Guide
+Department: Engineering
+
+All backend services use type-annotated Python or Go. Pull requests require at least one approving review and passing CI before merge. Commit messages should follow the conventional-commits format for automated changelog generation.

@@ -1,0 +1,4 @@
+Title: Q2 2026 Departmental Budget Summary
+Department: Finance
+
+Total operating expenditure for Q2 2026 was 5.3 million USD, 8% under budget. Engineering accounted for 55% of spend, primarily cloud infrastructure. Legal spend decreased 22% quarter over quarter following headcount growth.

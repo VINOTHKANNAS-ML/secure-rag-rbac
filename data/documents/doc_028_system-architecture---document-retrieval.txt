@@ -1,0 +1,4 @@
+Title: System Architecture - Document Retrieval Service
+Department: Engineering
+
+The retrieval service uses a vector database with metadata filters for department and confidentiality level, sitting behind an internal gateway that enforces authentication. Embeddings are generated using a sentence-transformer model hosted on internal GPU nodes.

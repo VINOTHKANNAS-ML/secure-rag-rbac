@@ -1,0 +1,4 @@
+Title: Annual Insurance and Risk Coverage Summary
+Department: Finance
+
+The company maintains general liability, cyber liability, and directors & officers insurance renewed annually each September. Cyber liability coverage was increased this year following the growth in customer data volume handled by the platform.

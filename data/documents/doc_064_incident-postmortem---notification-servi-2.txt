@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Notification Service (August)
+Department: Engineering
+
+On August 15, average response time on the notification service rose to 2.8 seconds due to a slow downstream dependency timing out under retry storms. The fix involved adding mandatory RBAC filtering before the similarity search stage, cutting p99 latency back under the 500ms SLO.

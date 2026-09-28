@@ -1,0 +1,4 @@
+Title: Customer Onboarding Playbook
+Department: Sales
+
+New enterprise customers are assigned a dedicated onboarding manager for the first 90 days. Kickoff calls should be scheduled within 5 business days of contract signature, with a technical integration checklist shared in advance.

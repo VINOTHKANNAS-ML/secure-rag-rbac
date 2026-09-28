@@ -1,0 +1,4 @@
+Title: Q3 2025 Departmental Budget Summary
+Department: Finance
+
+Total operating expenditure for Q3 2025 was 4.4 million USD, 12% over budget. Engineering accounted for 45% of spend, primarily cloud infrastructure. HR spend decreased 4% quarter over quarter following headcount growth.

@@ -1,0 +1,482 @@
+{
+  "doc_001_employee-handbook-overview": {
+    "title": "Employee Handbook Overview",
+    "department": "General",
+    "confidentiality_level": 0,
+    "path": "data/documents/doc_001_employee-handbook-overview.txt"
+  },
+  "doc_002_company-mission-and-values": {
+    "title": "Company Mission and Values",
+    "department": "General",
+    "confidentiality_level": 0,
+    "path": "data/documents/doc_002_company-mission-and-values.txt"
+  },
+  "doc_003_office-facilities-guide": {
+    "title": "Office Facilities Guide",
+    "department": "General",
+    "confidentiality_level": 0,
+    "path": "data/documents/doc_003_office-facilities-guide.txt"
+  },
+  "doc_004_new-hire-orientation-schedule": {
+    "title": "New Hire Orientation Schedule",
+    "department": "General",
+    "confidentiality_level": 0,
+    "path": "data/documents/doc_004_new-hire-orientation-schedule.txt"
+  },
+  "doc_005_internal-wiki-usage-guidelines": {
+    "title": "Internal Wiki Usage Guidelines",
+    "department": "General",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_005_internal-wiki-usage-guidelines.txt"
+  },
+  "doc_006_it-equipment-and-software-request-policy": {
+    "title": "IT Equipment and Software Request Policy",
+    "department": "General",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_006_it-equipment-and-software-request-policy.txt"
+  },
+  "doc_007_company-travel-booking-guidelines": {
+    "title": "Company Travel Booking Guidelines",
+    "department": "General",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_007_company-travel-booking-guidelines.txt"
+  },
+  "doc_008_leave-and-time-off-policy": {
+    "title": "Leave and Time-Off Policy",
+    "department": "HR",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_008_leave-and-time-off-policy.txt"
+  },
+  "doc_009_remote-work-policy": {
+    "title": "Remote Work Policy",
+    "department": "HR",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_009_remote-work-policy.txt"
+  },
+  "doc_010_parental-leave-policy": {
+    "title": "Parental Leave Policy",
+    "department": "HR",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_010_parental-leave-policy.txt"
+  },
+  "doc_011_employee-wellness-program-guide": {
+    "title": "Employee Wellness Program Guide",
+    "department": "HR",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_011_employee-wellness-program-guide.txt"
+  },
+  "doc_012_diversity--equity--and-inclusion-framewo": {
+    "title": "Diversity, Equity, and Inclusion Framework",
+    "department": "HR",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_012_diversity--equity--and-inclusion-framewo.txt"
+  },
+  "doc_013_performance-review-cycle---manager-guide": {
+    "title": "Performance Review Cycle - Manager Guide",
+    "department": "HR",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_013_performance-review-cycle---manager-guide.txt"
+  },
+  "doc_014_workplace-investigation-procedures": {
+    "title": "Workplace Investigation Procedures",
+    "department": "HR",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_014_workplace-investigation-procedures.txt"
+  },
+  "doc_015_reorganization-planning-guidelines---man": {
+    "title": "Reorganization Planning Guidelines - Managers",
+    "department": "HR",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_015_reorganization-planning-guidelines---man.txt"
+  },
+  "doc_016_executive-compensation-bands-2026": {
+    "title": "Executive Compensation Bands 2026",
+    "department": "HR",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_016_executive-compensation-bands-2026.txt"
+  },
+  "doc_017_employee-disciplinary-case-log-q2": {
+    "title": "Employee Disciplinary Case Log Q2",
+    "department": "HR",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_017_employee-disciplinary-case-log-q2.txt"
+  },
+  "doc_018_planned-layoff---confidential-restructur": {
+    "title": "Planned Layoff - Confidential Restructuring Memo",
+    "department": "HR",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_018_planned-layoff---confidential-restructur.txt"
+  },
+  "doc_019_expense-reimbursement-policy": {
+    "title": "Expense Reimbursement Policy",
+    "department": "Finance",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_019_expense-reimbursement-policy.txt"
+  },
+  "doc_020_purchase-order-and-procurement-guideline": {
+    "title": "Purchase Order and Procurement Guidelines",
+    "department": "Finance",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_020_purchase-order-and-procurement-guideline.txt"
+  },
+  "doc_021_vendor-contract-renewal---cloud-infrastr": {
+    "title": "Vendor Contract Renewal - Cloud Infrastructure",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_021_vendor-contract-renewal---cloud-infrastr.txt"
+  },
+  "doc_022_annual-insurance-and-risk-coverage-summa": {
+    "title": "Annual Insurance and Risk Coverage Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_022_annual-insurance-and-risk-coverage-summa.txt"
+  },
+  "doc_023_fy2026-revenue-forecast-and-investor-dec": {
+    "title": "FY2026 Revenue Forecast and Investor Deck Notes",
+    "department": "Finance",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_023_fy2026-revenue-forecast-and-investor-dec.txt"
+  },
+  "doc_024_m-a-due-diligence---project-northstar": {
+    "title": "M&A Due Diligence - Project Northstar",
+    "department": "Finance",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_024_m-a-due-diligence---project-northstar.txt"
+  },
+  "doc_025_coding-standards-and-style-guide": {
+    "title": "Coding Standards and Style Guide",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_025_coding-standards-and-style-guide.txt"
+  },
+  "doc_026_onboarding--local-development-environmen": {
+    "title": "Onboarding: Local Development Environment Setup",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_026_onboarding--local-development-environmen.txt"
+  },
+  "doc_027_on-call-rotation-handbook": {
+    "title": "On-Call Rotation Handbook",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_027_on-call-rotation-handbook.txt"
+  },
+  "doc_028_system-architecture---document-retrieval": {
+    "title": "System Architecture - Document Retrieval Service",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_028_system-architecture---document-retrieval.txt"
+  },
+  "doc_029_disaster-recovery-and-failover-runbook": {
+    "title": "Disaster Recovery and Failover Runbook",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_029_disaster-recovery-and-failover-runbook.txt"
+  },
+  "doc_030_production-database-credentials-rotation": {
+    "title": "Production Database Credentials Rotation Runbook",
+    "department": "Engineering",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_030_production-database-credentials-rotation.txt"
+  },
+  "doc_031_security-vulnerability-report---auth-ser": {
+    "title": "Security Vulnerability Report - Auth Service",
+    "department": "Engineering",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_031_security-vulnerability-report---auth-ser.txt"
+  },
+  "doc_032_standard-nda-template": {
+    "title": "Standard NDA Template",
+    "department": "Legal",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_032_standard-nda-template.txt"
+  },
+  "doc_033_standard-contractor-agreement-template": {
+    "title": "Standard Contractor Agreement Template",
+    "department": "Legal",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_033_standard-contractor-agreement-template.txt"
+  },
+  "doc_034_data-processing-agreement---eu-customers": {
+    "title": "Data Processing Agreement - EU Customers",
+    "department": "Legal",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_034_data-processing-agreement---eu-customers.txt"
+  },
+  "doc_035_open-source-license-compliance-policy": {
+    "title": "Open Source License Compliance Policy",
+    "department": "Legal",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_035_open-source-license-compliance-policy.txt"
+  },
+  "doc_036_pending-litigation-summary---patent-disp": {
+    "title": "Pending Litigation Summary - Patent Dispute",
+    "department": "Legal",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_036_pending-litigation-summary---patent-disp.txt"
+  },
+  "doc_037_regulatory-investigation---data-retentio": {
+    "title": "Regulatory Investigation - Data Retention Practices",
+    "department": "Legal",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_037_regulatory-investigation---data-retentio.txt"
+  },
+  "doc_038_sales-playbook---enterprise-outbound": {
+    "title": "Sales Playbook - Enterprise Outbound",
+    "department": "Sales",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_038_sales-playbook---enterprise-outbound.txt"
+  },
+  "doc_039_competitive-positioning-one-pager": {
+    "title": "Competitive Positioning One-Pager",
+    "department": "Sales",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_039_competitive-positioning-one-pager.txt"
+  },
+  "doc_040_customer-onboarding-playbook": {
+    "title": "Customer Onboarding Playbook",
+    "department": "Sales",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_040_customer-onboarding-playbook.txt"
+  },
+  "doc_041_enterprise-discount-approval-matrix": {
+    "title": "Enterprise Discount Approval Matrix",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_041_enterprise-discount-approval-matrix.txt"
+  },
+  "doc_042_board-meeting-agenda---q1-2026": {
+    "title": "Board Meeting Agenda - Q1 2026",
+    "department": "Executive",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_042_board-meeting-agenda---q1-2026.txt"
+  },
+  "doc_043_strategic-plan-2026-2028---confidential-": {
+    "title": "Strategic Plan 2026-2028 - Confidential Draft",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_043_strategic-plan-2026-2028---confidential-.txt"
+  },
+  "doc_044_ceo-succession-planning-memo": {
+    "title": "CEO Succession Planning Memo",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_044_ceo-succession-planning-memo.txt"
+  },
+  "doc_045_q1-2025-departmental-budget-summary": {
+    "title": "Q1 2025 Departmental Budget Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_045_q1-2025-departmental-budget-summary.txt"
+  },
+  "doc_046_q2-2025-departmental-budget-summary": {
+    "title": "Q2 2025 Departmental Budget Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_046_q2-2025-departmental-budget-summary.txt"
+  },
+  "doc_047_q3-2025-departmental-budget-summary": {
+    "title": "Q3 2025 Departmental Budget Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_047_q3-2025-departmental-budget-summary.txt"
+  },
+  "doc_048_q4-2025-departmental-budget-summary": {
+    "title": "Q4 2025 Departmental Budget Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_048_q4-2025-departmental-budget-summary.txt"
+  },
+  "doc_049_q1-2026-departmental-budget-summary": {
+    "title": "Q1 2026 Departmental Budget Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_049_q1-2026-departmental-budget-summary.txt"
+  },
+  "doc_050_q2-2026-departmental-budget-summary": {
+    "title": "Q2 2026 Departmental Budget Summary",
+    "department": "Finance",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_050_q2-2026-departmental-budget-summary.txt"
+  },
+  "doc_051_q1-2025-pipeline-review---strategic-acco": {
+    "title": "Q1 2025 Pipeline Review - Strategic Accounts",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_051_q1-2025-pipeline-review---strategic-acco.txt"
+  },
+  "doc_052_q2-2025-pipeline-review---strategic-acco": {
+    "title": "Q2 2025 Pipeline Review - Strategic Accounts",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_052_q2-2025-pipeline-review---strategic-acco.txt"
+  },
+  "doc_053_q3-2025-pipeline-review---strategic-acco": {
+    "title": "Q3 2025 Pipeline Review - Strategic Accounts",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_053_q3-2025-pipeline-review---strategic-acco.txt"
+  },
+  "doc_054_q4-2025-pipeline-review---strategic-acco": {
+    "title": "Q4 2025 Pipeline Review - Strategic Accounts",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_054_q4-2025-pipeline-review---strategic-acco.txt"
+  },
+  "doc_055_q1-2026-pipeline-review---strategic-acco": {
+    "title": "Q1 2026 Pipeline Review - Strategic Accounts",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_055_q1-2026-pipeline-review---strategic-acco.txt"
+  },
+  "doc_056_q2-2026-pipeline-review---strategic-acco": {
+    "title": "Q2 2026 Pipeline Review - Strategic Accounts",
+    "department": "Sales",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_056_q2-2026-pipeline-review---strategic-acco.txt"
+  },
+  "doc_057_incident-postmortem---vector-search-clus": {
+    "title": "Incident Postmortem - Vector Search Cluster (January)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_057_incident-postmortem---vector-search-clus.txt"
+  },
+  "doc_058_incident-postmortem---query-api--februar": {
+    "title": "Incident Postmortem - Query Api (February)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_058_incident-postmortem---query-api--februar.txt"
+  },
+  "doc_059_incident-postmortem---billing-service--m": {
+    "title": "Incident Postmortem - Billing Service (March)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_059_incident-postmortem---billing-service--m.txt"
+  },
+  "doc_060_incident-postmortem---document-ingestion": {
+    "title": "Incident Postmortem - Document Ingestion Pipeline (April)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_060_incident-postmortem---document-ingestion.txt"
+  },
+  "doc_061_incident-postmortem---document-ingestion-2": {
+    "title": "Incident Postmortem - Document Ingestion Pipeline (May)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_061_incident-postmortem---document-ingestion-2.txt"
+  },
+  "doc_062_incident-postmortem---query-api--june": {
+    "title": "Incident Postmortem - Query Api (June)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_062_incident-postmortem---query-api--june.txt"
+  },
+  "doc_063_incident-postmortem---notification-servi": {
+    "title": "Incident Postmortem - Notification Service (July)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_063_incident-postmortem---notification-servi.txt"
+  },
+  "doc_064_incident-postmortem---notification-servi-2": {
+    "title": "Incident Postmortem - Notification Service (August)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_064_incident-postmortem---notification-servi-2.txt"
+  },
+  "doc_065_incident-postmortem---query-api--septemb": {
+    "title": "Incident Postmortem - Query Api (September)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_065_incident-postmortem---query-api--septemb.txt"
+  },
+  "doc_066_incident-postmortem---billing-service--o": {
+    "title": "Incident Postmortem - Billing Service (October)",
+    "department": "Engineering",
+    "confidentiality_level": 2,
+    "path": "data/documents/doc_066_incident-postmortem---billing-service--o.txt"
+  },
+  "doc_067_sprint-1-notes---identity---access-team": {
+    "title": "Sprint 1 Notes - Identity & Access Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_067_sprint-1-notes---identity---access-team.txt"
+  },
+  "doc_068_sprint-2-notes---search-relevance-team": {
+    "title": "Sprint 2 Notes - Search Relevance Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_068_sprint-2-notes---search-relevance-team.txt"
+  },
+  "doc_069_sprint-3-notes---data-ingestion-team": {
+    "title": "Sprint 3 Notes - Data Ingestion Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_069_sprint-3-notes---data-ingestion-team.txt"
+  },
+  "doc_070_sprint-4-notes---search-relevance-team": {
+    "title": "Sprint 4 Notes - Search Relevance Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_070_sprint-4-notes---search-relevance-team.txt"
+  },
+  "doc_071_sprint-5-notes---search-relevance-team": {
+    "title": "Sprint 5 Notes - Search Relevance Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_071_sprint-5-notes---search-relevance-team.txt"
+  },
+  "doc_072_sprint-6-notes---search-relevance-team": {
+    "title": "Sprint 6 Notes - Search Relevance Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_072_sprint-6-notes---search-relevance-team.txt"
+  },
+  "doc_073_sprint-7-notes---identity---access-team": {
+    "title": "Sprint 7 Notes - Identity & Access Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_073_sprint-7-notes---identity---access-team.txt"
+  },
+  "doc_074_sprint-8-notes---frontend-team": {
+    "title": "Sprint 8 Notes - Frontend Team",
+    "department": "Engineering",
+    "confidentiality_level": 1,
+    "path": "data/documents/doc_074_sprint-8-notes---frontend-team.txt"
+  },
+  "doc_075_board-update-highlights---q1-2025": {
+    "title": "Board Update Highlights - Q1 2025",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_075_board-update-highlights---q1-2025.txt"
+  },
+  "doc_076_board-update-highlights---q2-2025": {
+    "title": "Board Update Highlights - Q2 2025",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_076_board-update-highlights---q2-2025.txt"
+  },
+  "doc_077_board-update-highlights---q3-2025": {
+    "title": "Board Update Highlights - Q3 2025",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_077_board-update-highlights---q3-2025.txt"
+  },
+  "doc_078_board-update-highlights---q4-2025": {
+    "title": "Board Update Highlights - Q4 2025",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_078_board-update-highlights---q4-2025.txt"
+  },
+  "doc_079_board-update-highlights---q1-2026": {
+    "title": "Board Update Highlights - Q1 2026",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_079_board-update-highlights---q1-2026.txt"
+  },
+  "doc_080_board-update-highlights---q2-2026": {
+    "title": "Board Update Highlights - Q2 2026",
+    "department": "Executive",
+    "confidentiality_level": 3,
+    "path": "data/documents/doc_080_board-update-highlights---q2-2026.txt"
+  }
+}

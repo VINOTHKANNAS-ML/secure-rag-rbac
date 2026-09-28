@@ -1,0 +1,4 @@
+Title: Q1 2026 Departmental Budget Summary
+Department: Finance
+
+Total operating expenditure for Q1 2026 was 4.0 million USD, 7% over budget. Engineering accounted for 46% of spend, primarily cloud infrastructure. Marketing spend decreased 21% quarter over quarter due to the product launch campaign.

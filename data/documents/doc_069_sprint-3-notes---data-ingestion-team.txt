@@ -1,0 +1,4 @@
+Title: Sprint 3 Notes - Data Ingestion Team
+Department: Engineering
+
+Sprint 3 for the Data Ingestion team focused on migrating the embedding pipeline to a newer model version. 37 story points were completed against a commitment of 37. Key blockers included flaky integration tests in the CI pipeline, which is being tracked as a follow-up for next sprint.

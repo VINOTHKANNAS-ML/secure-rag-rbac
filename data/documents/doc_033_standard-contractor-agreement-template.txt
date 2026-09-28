@@ -1,0 +1,4 @@
+Title: Standard Contractor Agreement Template
+Department: Legal
+
+This template governs independent contractor engagements, clarifying IP assignment, confidentiality obligations, and the absence of an employment relationship. Engagements longer than 12 months require Legal review for potential misclassification risk.

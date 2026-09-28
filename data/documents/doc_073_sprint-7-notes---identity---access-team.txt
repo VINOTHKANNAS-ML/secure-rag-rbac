@@ -1,0 +1,4 @@
+Title: Sprint 7 Notes - Identity & Access Team
+Department: Engineering
+
+Sprint 7 for the Identity & Access team focused on reducing false-positive access denials reported by beta customers. 51 story points were completed against a commitment of 54. Key blockers included an unresolved dependency version conflict, which is being tracked as a follow-up for next sprint.

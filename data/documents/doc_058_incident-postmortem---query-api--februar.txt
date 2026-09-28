@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Query Api (February)
+Department: Engineering
+
+On February 7, average response time on the query API rose to 1.8 seconds due to a memory leak in the embedding cache. The fix involved rightsizing the autoscaling thresholds and adding a warm pool, eliminating repeat occurrences over the following month.

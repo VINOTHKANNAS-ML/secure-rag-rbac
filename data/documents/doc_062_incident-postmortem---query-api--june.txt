@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Query Api (June)
+Department: Engineering
+
+On June 13, error rate on the query API rose to 4% due to a misconfigured autoscaling policy under peak load. The fix involved patching the cache eviction logic and adding memory alerts, restoring the service to its normal error budget.

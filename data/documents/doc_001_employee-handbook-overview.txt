@@ -1,0 +1,4 @@
+Title: Employee Handbook Overview
+Department: General
+
+This handbook introduces company values, the code of conduct, office locations, and general onboarding steps for all new hires. It covers working hours, the dress code, holiday calendar, and how to request IT equipment through the internal service desk.

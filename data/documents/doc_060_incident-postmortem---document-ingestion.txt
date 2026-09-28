@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Document Ingestion Pipeline (April)
+Department: Engineering
+
+On April 12, average response time on the document ingestion pipeline rose to 5.5 seconds due to a database connection pool exhaustion during a traffic spike. The fix involved patching the cache eviction logic and adding memory alerts, restoring the service to its normal error budget.

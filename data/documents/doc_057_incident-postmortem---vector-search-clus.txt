@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Vector Search Cluster (January)
+Department: Engineering
+
+On January 8, average response time on the vector search cluster rose to 4.6 seconds due to a database connection pool exhaustion during a traffic spike. The fix involved introducing a circuit breaker around the downstream dependency, reducing average result set size by 90%.

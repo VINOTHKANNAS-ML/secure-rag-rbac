@@ -1,0 +1,4 @@
+Title: Sprint 4 Notes - Search Relevance Team
+Department: Engineering
+
+Sprint 4 for the Search Relevance team focused on improving retrieval latency for large document sets. 25 story points were completed against a commitment of 32. Key blockers included a delayed API contract from the identity team, which is being tracked as a follow-up for next sprint.

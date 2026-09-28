@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in — Secure Enterprise RAG</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="page-center">
+    <div class="card login-card">
+      <h1>🔐 Secure Enterprise Document Intelligence</h1>
+      <p class="subtitle">RAG with Role-Based Access Control</p>
+
+      <form id="login-form">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autocomplete="username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required />
+
+        <button type="submit">Log in</button>
+      </form>
+
+      <p id="error-message" class="error hidden"></p>
+
+      <p class="hint">
+        Demo accounts and passwords are listed in <code>DEMO_CREDENTIALS.md</code>
+        in the project root.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("login-form");
+    const errorEl = document.getElementById("error-message");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.classList.add("hidden");
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          errorEl.textContent = data.error || "Login failed.";
+          errorEl.classList.remove("hidden");
+          return;
+        }
+
+        window.location.href = "/chat";
+      } catch (err) {
+        errorEl.textContent = "Could not reach the server.";
+        errorEl.classList.remove("hidden");
+      }
+    });
+  </script>
+</body>
+</html>

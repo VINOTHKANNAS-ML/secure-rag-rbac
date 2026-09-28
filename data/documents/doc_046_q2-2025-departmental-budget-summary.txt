@@ -1,0 +1,4 @@
+Title: Q2 2025 Departmental Budget Summary
+Department: Finance
+
+Total operating expenditure for Q2 2025 was 4.5 million USD, 2% under budget. Engineering accounted for 40% of spend, primarily cloud infrastructure. Sales spend increased 20% quarter over quarter due to the product launch campaign.

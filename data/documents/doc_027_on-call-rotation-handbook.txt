@@ -1,0 +1,4 @@
+Title: On-Call Rotation Handbook
+Department: Engineering
+
+Each service team maintains a weekly on-call rotation via the scheduling tool. Primary on-call must acknowledge pages within 10 minutes; unacknowledged pages escalate automatically to the secondary on-call engineer and then the engineering manager.

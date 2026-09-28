@@ -1,0 +1,4 @@
+Title: Competitive Positioning One-Pager
+Department: Sales
+
+Compared to legacy document search vendors, our RBAC-aware retrieval reduces data exposure risk while maintaining sub-second query latency. Use this positioning in competitive deals against incumbent providers.

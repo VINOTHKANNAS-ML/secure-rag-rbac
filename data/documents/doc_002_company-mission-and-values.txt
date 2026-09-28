@@ -1,0 +1,4 @@
+Title: Company Mission and Values
+Department: General
+
+Our mission is to build reliable software that helps enterprises manage knowledge securely. Our values are transparency, ownership, customer obsession, and continuous learning. These values guide hiring, promotion, and day-to-day decision making across every department.

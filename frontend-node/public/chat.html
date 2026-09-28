@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Enterprise RAG</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Session</h2>
+      <div id="user-info">Loading...</div>
+      <a href="/documents" class="admin-link">📄 Documents &amp; Upload</a>
+      <a id="admin-link" href="/admin" class="admin-link hidden">🛠 Admin Panel</a>
+      <button id="logout-btn" class="secondary">Log out</button>
+    </aside>
+
+    <main class="main">
+      <h1>🔐 Secure Enterprise Document Intelligence</h1>
+      <p class="subtitle">
+        RAG with Role-Based Access Control — retrieval is filtered by role
+        <em>before</em> any content reaches the answer.
+      </p>
+
+      <form id="ask-form">
+        <label for="question">Ask a question about company documents</label>
+        <input type="text" id="question" name="question"
+               placeholder="e.g. What is the remote work policy?" required />
+        <button type="submit">Ask</button>
+      </form>
+
+      <div id="loading" class="hidden">Retrieving accessible documents and generating an answer...</div>
+
+      <section id="answer-section" class="hidden">
+        <h2>Answer</h2>
+        <div id="answer-text" class="answer-box"></div>
+
+        <div id="denied-note" class="warning hidden"></div>
+
+        <div id="sources-section" class="hidden">
+          <h3>Sources</h3>
+          <div id="sources-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // Minimal, dependency-free Markdown -> HTML renderer. Handles the
+    // subset the LLM is instructed to use: headings, bold/italic, and
+    // numbered/bulleted lists. Escapes everything else so raw HTML in
+    // the model's answer can never be injected into the page.
+    function renderMarkdown(md) {
+      const lines = md.replace(/\r\n/g, "\n").split("\n");
+      let html = "";
+      let inList = null; // "ul" | "ol" | null
+
+      function closeList() {
+        if (inList) {
+          html += `</${inList}>`;
+          inList = null;
+        }
+      }
+
+      function inlineFormat(text) {
+        let out = escapeHtml(text);
+        out = out.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+        out = out.replace(/(?<!\*)\*([^*]+?)\*(?!\*)/g, "<em>$1</em>");
+        out = out.replace(/`([^`]+?)`/g, "<code>$1</code>");
+        return out;
+      }
+
+      for (const rawLine of lines) {
+        const line = rawLine.trim();
+
+        if (line === "") {
+          closeList();
+          continue;
+        }
+
+        const headingMatch = line.match(/^(#{1,4})\s+(.*)$/);
+        if (headingMatch) {
+          closeList();
+          const level = Math.min(headingMatch[1].length + 2, 6); // h3..h6
+          html += `<h${level}>${inlineFormat(headingMatch[2])}</h${level}>`;
+          continue;
+        }
+
+        const olMatch = line.match(/^\d+[.)]\s+(.*)$/);
+        if (olMatch) {
+          if (inList !== "ol") {
+            closeList();
+            html += "<ol>";
+            inList = "ol";
+          }
+          html += `<li>${inlineFormat(olMatch[1])}</li>`;
+          continue;
+        }
+
+        const ulMatch = line.match(/^[-*]\s+(.*)$/);
+        if (ulMatch) {
+          if (inList !== "ul") {
+            closeList();
+            html += "<ul>";
+            inList = "ul";
+          }
+          html += `<li>${inlineFormat(ulMatch[1])}</li>`;
+          continue;
+        }
+
+        closeList();
+        html += `<p>${inlineFormat(line)}</p>`;
+      }
+
+      closeList();
+      return html;
+    }
+
+    let currentUser = null;
+
+    async function loadUser() {
+      const res = await fetch("/api/me");
+      if (!res.ok) {
+        window.location.href = "/";
+        return;
+      }
+      const data = await res.json();
+      currentUser = data.user;
+      renderUserInfo();
+    }
+
+    function renderUserInfo() {
+      const el = document.getElementById("user-info");
+      el.innerHTML = `
+        <p><strong>Name:</strong> ${currentUser.full_name}</p>
+        <p><strong>Username:</strong> ${currentUser.username}</p>
+        <p><strong>Role:</strong> <code>${currentUser.role}</code></p>
+        <p><strong>Departments allowed:</strong><br/>${currentUser.allowed_departments.join(", ")}</p>
+        <p><strong>Max confidentiality level:</strong> ${currentUser.max_confidentiality}</p>
+      `;
+
+      if (currentUser.role === "admin") {
+        document.getElementById("admin-link").classList.remove("hidden");
+      }
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+      await fetch("/api/logout", { method: "POST" });
+      window.location.href = "/";
+    });
+
+    document.getElementById("ask-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const question = document.getElementById("question").value.trim();
+      if (!question) return;
+
+      document.getElementById("loading").classList.remove("hidden");
+      document.getElementById("answer-section").classList.add("hidden");
+
+      try {
+        const res = await fetch("/api/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question }),
+        });
+        const data = await res.json();
+
+        document.getElementById("loading").classList.add("hidden");
+
+        if (!res.ok) {
+          document.getElementById("answer-text").textContent = data.error || "Something went wrong.";
+          document.getElementById("answer-section").classList.remove("hidden");
+          document.getElementById("sources-section").classList.add("hidden");
+          document.getElementById("denied-note").classList.add("hidden");
+          return;
+        }
+
+        renderAnswer(data);
+      } catch (err) {
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("answer-text").textContent = "Could not reach the server.";
+        document.getElementById("answer-section").classList.remove("hidden");
+      }
+    });
+
+    function renderAnswer(data) {
+      document.getElementById("answer-text").innerHTML = renderMarkdown(data.answer);
+      document.getElementById("answer-section").classList.remove("hidden");
+
+      const deniedNote = document.getElementById("denied-note");
+      if (data.denied_count > 0) {
+        deniedNote.textContent = `${data.denied_count} matching chunk(s) were withheld because they exceed your role's access level.`;
+        deniedNote.classList.remove("hidden");
+      } else {
+        deniedNote.classList.add("hidden");
+      }
+
+      const sourcesSection = document.getElementById("sources-section");
+      const sourcesList = document.getElementById("sources-list");
+      sourcesList.innerHTML = "";
+
+      if (data.sources && data.sources.length > 0) {
+        data.sources.forEach((s) => {
+          const div = document.createElement("details");
+          div.className = "source-item";
+          const summary = document.createElement("summary");
+          summary.textContent = `${s.title} · ${s.department} · level ${s.confidentiality_level}`;
+          const body = document.createElement("p");
+          body.textContent = s.text;
+          div.appendChild(summary);
+          div.appendChild(body);
+          sourcesList.appendChild(div);
+        });
+        sourcesSection.classList.remove("hidden");
+      } else {
+        sourcesSection.classList.add("hidden");
+      }
+    }
+
+    loadUser();
+  </script>
+</body>
+</html>

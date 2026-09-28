@@ -1,0 +1,4 @@
+Title: Sprint 1 Notes - Identity & Access Team
+Department: Engineering
+
+Sprint 1 for the Identity & Access team focused on reducing false-positive access denials reported by beta customers. 46 story points were completed against a commitment of 54. Key blockers included a delayed API contract from the identity team, which is being tracked as a follow-up for next sprint.

@@ -1,0 +1,4 @@
+Title: Vendor Contract Renewal - Cloud Infrastructure
+Department: Finance
+
+The company renewed its primary cloud provider contract for 3 years at a 12% negotiated discount contingent on committed annual spend of 2.1 million USD. Early termination carries a penalty equal to 40% of remaining committed spend.

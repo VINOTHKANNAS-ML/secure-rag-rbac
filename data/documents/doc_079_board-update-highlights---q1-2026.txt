@@ -1,0 +1,4 @@
+Title: Board Update Highlights - Q1 2026
+Department: Executive
+
+The Q1 2026 board update highlights successful launch of the RBAC-aware retrieval product line. Customer count grew to approximately 304, with net revenue retention at 110%. The board requested a follow-up deep dive regarding the security incident response process.

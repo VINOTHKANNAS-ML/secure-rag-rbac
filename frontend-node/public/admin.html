@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Secure Enterprise RAG</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Session</h2>
+      <div id="user-info">Loading...</div>
+      <a href="/chat" class="admin-link">← Back to chat</a>
+      <a href="/documents" class="admin-link">📄 Documents &amp; Upload</a>
+      <button id="logout-btn" class="secondary">Log out</button>
+    </aside>
+
+    <main class="main">
+      <h1>🛠 Admin Panel</h1>
+      <p class="subtitle">Manage user accounts and review login activity.</p>
+
+      <p id="error-message" class="error hidden"></p>
+
+      <!-- ============ Users ============ -->
+      <section>
+        <h2>Users</h2>
+        <table id="users-table" class="data-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Full name</th>
+              <th>Department</th>
+              <th>Role</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>Add a user</h3>
+        <form id="add-user-form" class="inline-form">
+          <div class="form-row">
+            <div>
+              <label for="new-username">Username</label>
+              <input type="text" id="new-username" required />
+            </div>
+            <div>
+              <label for="new-fullname">Full name</label>
+              <input type="text" id="new-fullname" required />
+            </div>
+            <div>
+              <label for="new-department">Department</label>
+              <select id="new-department" required></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="new-role">Role</label>
+              <select id="new-role" required></select>
+            </div>
+            <div>
+              <label for="new-password">Password</label>
+              <input type="password" id="new-password" minlength="8" required />
+            </div>
+            <div class="form-row-button">
+              <button type="submit">Add user</button>
+            </div>
+          </div>
+        </form>
+        <p id="add-user-message" class="hidden"></p>
+      </section>
+
+      <!-- ============ Login activity ============ -->
+      <section>
+        <div class="section-header-row">
+          <h2>Login activity</h2>
+          <a id="download-csv" href="/api/admin/login-log/csv" class="secondary-btn">⬇ Download CSV</a>
+        </div>
+        <table id="login-log-table" class="data-table">
+          <thead>
+            <tr>
+              <th>Time (UTC)</th>
+              <th>Username</th>
+              <th>Result</th>
+              <th>IP</th>
+            </tr>
+          </thead>
+          <tbody id="login-log-tbody"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    let currentUser = null;
+    let rolesAndDepartments = { roles: [], departments: [] };
+
+    function showError(msg) {
+      const el = document.getElementById("error-message");
+      el.textContent = msg;
+      el.classList.remove("hidden");
+    }
+
+    async function loadUser() {
+      const res = await fetch("/api/me");
+      if (!res.ok) {
+        window.location.href = "/";
+        return;
+      }
+      const data = await res.json();
+      currentUser = data.user;
+
+      if (currentUser.role !== "admin") {
+        window.location.href = "/chat";
+        return;
+      }
+
+      document.getElementById("user-info").innerHTML = `
+        <p><strong>Name:</strong> ${currentUser.full_name}</p>
+        <p><strong>Username:</strong> ${currentUser.username}</p>
+        <p><strong>Role:</strong> <code>${currentUser.role}</code></p>
+      `;
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+      await fetch("/api/logout", { method: "POST" });
+      window.location.href = "/";
+    });
+
+    async function loadRolesAndDepartments() {
+      const res = await fetch("/api/admin/roles");
+      if (!res.ok) return;
+      rolesAndDepartments = await res.json();
+
+      const roleSelect = document.getElementById("new-role");
+      roleSelect.innerHTML = rolesAndDepartments.roles
+        .map((r) => `<option value="${r}">${r}</option>`)
+        .join("");
+
+      const deptSelect = document.getElementById("new-department");
+      deptSelect.innerHTML = rolesAndDepartments.departments
+        .map((d) => `<option value="${d}">${d}</option>`)
+        .join("");
+    }
+
+    async function loadUsers() {
+      const res = await fetch("/api/admin/users");
+      if (!res.ok) {
+        const data = await res.json();
+        showError(data.error || "Could not load users.");
+        return;
+      }
+      const data = await res.json();
+      renderUsers(data.users);
+    }
+
+    function renderUsers(users) {
+      const tbody = document.getElementById("users-tbody");
+      tbody.innerHTML = "";
+
+      users.forEach((u) => {
+        const tr = document.createElement("tr");
+
+        const isSelf = u.username === currentUser.username;
+        tr.innerHTML = `
+          <td>${u.username}${isSelf ? " <em>(you)</em>" : ""}</td>
+          <td>${u.full_name}</td>
+          <td>${u.department}</td>
+          <td><code>${u.role}</code></td>
+          <td>
+            <button class="danger-btn" data-username="${u.username}" ${isSelf ? "disabled" : ""}>
+              Remove
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      tbody.querySelectorAll("button[data-username]").forEach((btn) => {
+        btn.addEventListener("click", () => removeUser(btn.dataset.username));
+      });
+    }
+
+    async function removeUser(username) {
+      if (!confirm(`Remove user "${username}"? This cannot be undone.`)) {
+        return;
+      }
+      const res = await fetch(`/api/admin/users/${encodeURIComponent(username)}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        showError(data.error || "Could not remove user.");
+        return;
+      }
+      loadUsers();
+    }
+
+    document.getElementById("add-user-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const messageEl = document.getElementById("add-user-message");
+      messageEl.classList.add("hidden");
+
+      const payload = {
+        username: document.getElementById("new-username").value.trim(),
+        full_name: document.getElementById("new-fullname").value.trim(),
+        department: document.getElementById("new-department").value,
+        role: document.getElementById("new-role").value,
+        password: document.getElementById("new-password").value,
+      };
+
+      const res = await fetch("/api/admin/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        messageEl.textContent = data.error || "Could not create user.";
+        messageEl.className = "error";
+        return;
+      }
+
+      messageEl.textContent = `User "${payload.username}" created.`;
+      messageEl.className = "success";
+      document.getElementById("add-user-form").reset();
+      loadUsers();
+    });
+
+    async function loadLoginLog() {
+      const res = await fetch("/api/admin/login-log");
+      if (!res.ok) {
+        const data = await res.json();
+        showError(data.error || "Could not load login activity.");
+        return;
+      }
+      const data = await res.json();
+      renderLoginLog(data.events);
+    }
+
+    function renderLoginLog(events) {
+      const tbody = document.getElementById("login-log-tbody");
+      tbody.innerHTML = "";
+
+      if (events.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4"><em>No login activity yet.</em></td></tr>`;
+        return;
+      }
+
+      events.forEach((ev) => {
+        const tr = document.createElement("tr");
+        const resultClass = ev.success ? "badge-success" : "badge-fail";
+        const resultText = ev.success ? "Success" : "Failed";
+        tr.innerHTML = `
+          <td>${ev.timestamp}</td>
+          <td>${ev.username}</td>
+          <td><span class="badge ${resultClass}">${resultText}</span></td>
+          <td>${ev.ip || "—"}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function init() {
+      await loadUser();
+      await Promise.all([loadRolesAndDepartments(), loadUsers(), loadLoginLog()]);
+    }
+
+    init();
+  </script>
+</body>
+</html>

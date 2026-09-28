@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Query Api (September)
+Department: Engineering
+
+On September 28, average response time on the query API rose to 3.8 seconds due to a database connection pool exhaustion during a traffic spike. The fix involved introducing a circuit breaker around the downstream dependency, reducing average result set size by 90%.

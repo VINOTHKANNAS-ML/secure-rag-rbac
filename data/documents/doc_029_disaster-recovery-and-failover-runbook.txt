@@ -1,0 +1,4 @@
+Title: Disaster Recovery and Failover Runbook
+Department: Engineering
+
+Primary region failover to the secondary region is triggered automatically when health checks fail for 3 consecutive minutes. Recovery Point Objective is 5 minutes; Recovery Time Objective is 15 minutes. Failover drills are run quarterly with results logged.

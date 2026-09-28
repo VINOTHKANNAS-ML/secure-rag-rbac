@@ -1,0 +1,4 @@
+Title: Enterprise Discount Approval Matrix
+Department: Sales
+
+Discounts above 20% require VP of Sales approval; discounts above 35% require CFO sign-off. Multi-year commitments may unlock an additional 5% at the AE's discretion within standard deal desk guidelines.

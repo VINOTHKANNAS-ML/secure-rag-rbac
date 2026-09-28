@@ -1,0 +1,65 @@
+{
+  "priya.intern": {
+    "role": "intern",
+    "full_name": "Priya Nair",
+    "department": "General",
+    "password_salt": "ec56758d24a3513d21a22319ef041ea5",
+    "password_hash": "6139cde956dd2bc1008a1049acfc0ceb18bcb49274ecaad7c67dbe53084e0cce"
+  },
+  "arjun.dev": {
+    "role": "employee",
+    "full_name": "Arjun Rao",
+    "department": "Engineering",
+    "password_salt": "bbb930f80975eb89ccc5b383e882f801",
+    "password_hash": "68e2671e7c0d0450a59a34e67705611c29c1ae86d339c812b2291060d50c2a8f"
+  },
+  "sofia.sales": {
+    "role": "employee",
+    "full_name": "Sofia Mendes",
+    "department": "Sales",
+    "password_salt": "8c42824142354617898f4fe4fb651972",
+    "password_hash": "7932e48cbb1699f695c1fc6bf86141537d322c4a9aa70fc687e3e7f3008ecdee"
+  },
+  "wei.engmgr": {
+    "role": "engineering_manager",
+    "full_name": "Wei Zhang",
+    "department": "Engineering",
+    "password_salt": "19ee75b6bc43f91da4d4eddcc34fa8f8",
+    "password_hash": "8f25f76f04ac378bc677463c1cf96d6b077b3ac21a25f5a2bdfff2b46279be3e"
+  },
+  "aisha.hr": {
+    "role": "hr_manager",
+    "full_name": "Aisha Khan",
+    "department": "HR",
+    "password_salt": "ef819ca970663906e03f603bd7beacf2",
+    "password_hash": "8907d5218d30c8a3987bb03824b1ccdc05df7f23b8f5787854194e53f1769f40"
+  },
+  "carlos.finance": {
+    "role": "finance_manager",
+    "full_name": "Carlos Ibanez",
+    "department": "Finance",
+    "password_salt": "0ed74d9256684ae214dfe175e06069f9",
+    "password_hash": "4ec98ae0be27adce9e6d25cbfd928fba0186d4154b40b9ade8397369d764e890"
+  },
+  "elena.legal": {
+    "role": "legal_counsel",
+    "full_name": "Elena Petrova",
+    "department": "Legal",
+    "password_salt": "1ff3081885705e7107358f6e85372f5c",
+    "password_hash": "961b1ed87d3a284e0be7b324f68917800e2d5a96b4f74dc4cea1a9c9005ac89e"
+  },
+  "james.ceo": {
+    "role": "executive",
+    "full_name": "James Whitfield",
+    "department": "Executive",
+    "password_salt": "af00a020cf9130b7a6590196adc27dbc",
+    "password_hash": "2b6554175b87bb7110c49b9c243d10ac2b3b370ed7cf96424476ac014cfb858a"
+  },
+  "admin.root": {
+    "role": "admin",
+    "full_name": "System Administrator",
+    "department": "General",
+    "password_salt": "e74e16c34edc81ac91f65226a48ab8d1",
+    "password_hash": "42cabcf922f57bf65c7a1f712a5b4424459e45b1ae4cf1be36174fae692acf09"
+  }
+}

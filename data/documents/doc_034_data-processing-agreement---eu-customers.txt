@@ -1,0 +1,4 @@
+Title: Data Processing Agreement - EU Customers
+Department: Legal
+
+This agreement governs the processing of personal data for customers in the European Union in accordance with GDPR, including data residency commitments and the 72-hour breach notification requirement.

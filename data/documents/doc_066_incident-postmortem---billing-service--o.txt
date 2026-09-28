@@ -1,0 +1,4 @@
+Title: Incident Postmortem - Billing Service (October)
+Department: Engineering
+
+On October 25, average response time on the billing service rose to 2.4 seconds due to a database connection pool exhaustion during a traffic spike. The fix involved increasing the connection pool size and adding backpressure, eliminating repeat occurrences over the following month.

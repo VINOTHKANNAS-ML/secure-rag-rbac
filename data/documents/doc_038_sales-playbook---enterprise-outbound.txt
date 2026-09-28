@@ -1,0 +1,4 @@
+Title: Sales Playbook - Enterprise Outbound
+Department: Sales
+
+The outbound motion targets accounts with 500+ employees. Discovery calls should identify budget, decision timeline, and security requirements within the first two conversations before a technical demo is scheduled.

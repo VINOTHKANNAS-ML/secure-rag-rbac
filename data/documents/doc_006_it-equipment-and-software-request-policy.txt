@@ -1,0 +1,4 @@
+Title: IT Equipment and Software Request Policy
+Department: General
+
+Standard laptop refresh cycle is 3 years. Software requiring a paid license must be requested through the IT portal with manager approval. Personal devices may access email via the mobile management app only after enrolling in the company's MDM profile.

@@ -1,0 +1,4 @@
+Title: Onboarding: Local Development Environment Setup
+Department: Engineering
+
+New engineers should install the company CLI, run 'make bootstrap', and configure pre-commit hooks. Access to staging clusters is granted automatically after completing the security training module in the first week.

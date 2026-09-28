@@ -1,0 +1,4 @@
+Title: Employee Disciplinary Case Log Q2
+Department: HR
+
+This restricted log tracks active disciplinary cases including formal warnings, performance improvement plans, and terminations for cause. Access is limited to HR leadership and Legal; sharing case details outside this group violates company confidentiality policy.

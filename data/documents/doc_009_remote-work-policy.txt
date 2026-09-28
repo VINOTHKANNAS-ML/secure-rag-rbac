@@ -1,0 +1,4 @@
+Title: Remote Work Policy
+Department: HR
+
+Employees may work remotely up to 3 days per week with manager sign off. Fully remote arrangements require VP approval and a documented home-office security checklist, including full-disk encryption and a company-managed VPN client.

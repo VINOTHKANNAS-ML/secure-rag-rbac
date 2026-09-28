@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documents — Secure Enterprise RAG</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Session</h2>
+      <div id="user-info">Loading...</div>
+      <a href="/chat" class="admin-link">← Back to chat</a>
+      <a id="admin-link" href="/admin" class="admin-link hidden">🛠 Admin Panel</a>
+      <button id="logout-btn" class="secondary">Log out</button>
+    </aside>
+
+    <main class="main">
+      <h1>📄 Documents</h1>
+      <p class="subtitle">
+        Upload documents to the knowledge base. They are indexed immediately and
+        only visible to roles that have access to the department and
+        confidentiality level you choose.
+      </p>
+
+      <p id="error-message" class="error hidden"></p>
+
+      <!-- ============ Upload ============ -->
+      <section id="upload-section" class="hidden">
+        <h2>Upload a document</h2>
+        <form id="upload-form" class="inline-form">
+          <div class="form-row">
+            <div>
+              <label for="file-input">File (.txt, .md, .csv, .json, .docx, .pdf — max 2 MB)</label>
+              <input type="file" id="file-input" accept=".txt,.md,.csv,.json,.docx,.pdf" required />
+            </div>
+            <div>
+              <label for="title-input">Title</label>
+              <input type="text" id="title-input" maxlength="120" placeholder="Defaults to the file name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="department-select">Department</label>
+              <select id="department-select" required></select>
+            </div>
+            <div>
+              <label for="level-select">Confidentiality level</label>
+              <select id="level-select" required></select>
+            </div>
+            <div class="form-row-button">
+              <button type="submit" id="upload-btn">Upload &amp; index</button>
+            </div>
+          </div>
+        </form>
+        <p id="upload-message" class="hidden"></p>
+        <p class="hint">
+          You can only upload into departments and levels your own role can access.
+          Higher levels are restricted to fewer roles.
+        </p>
+      </section>
+
+      <p id="no-upload-note" class="hint hidden">
+        Your role can browse documents but is not permitted to upload.
+      </p>
+
+      <!-- ============ List ============ -->
+      <section>
+        <h2>Documents you can access</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Department</th>
+              <th>Level</th>
+              <th>Uploaded by</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="docs-tbody"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const MAX_BYTES = 2 * 1024 * 1024;
+    let currentUser = null;
+
+    function showError(msg) {
+      const el = document.getElementById("error-message");
+      el.textContent = msg;
+      el.classList.remove("hidden");
+    }
+
+    function setUploadMessage(text, ok) {
+      const el = document.getElementById("upload-message");
+      el.textContent = text;
+      el.className = ok ? "success" : "error";
+    }
+
+    function cell(text) {
+      const td = document.createElement("td");
+      td.textContent = text;
+      return td;
+    }
+
+    async function loadUser() {
+      const res = await fetch("/api/me");
+      if (!res.ok) { window.location.href = "/"; return; }
+      currentUser = (await res.json()).user;
+
+      const info = document.getElementById("user-info");
+      info.innerHTML = "";
+      [["Name", currentUser.full_name], ["Username", currentUser.username], ["Role", currentUser.role]]
+        .forEach(([k, v]) => {
+          const p = document.createElement("p");
+          const b = document.createElement("strong");
+          b.textContent = k + ": ";
+          p.appendChild(b);
+          p.appendChild(document.createTextNode(v));
+          info.appendChild(p);
+        });
+      if (currentUser.role === "admin") {
+        document.getElementById("admin-link").classList.remove("hidden");
+      }
+    }
+
+    async function loadOptions() {
+      const res = await fetch("/api/documents/options");
+      if (!res.ok) return;
+      const opts = await res.json();
+
+      if (!opts.allowed) {
+        document.getElementById("no-upload-note").classList.remove("hidden");
+        return;
+      }
+      document.getElementById("upload-section").classList.remove("hidden");
+
+      const dept = document.getElementById("department-select");
+      opts.departments.forEach((d) => dept.add(new Option(d, d)));
+
+      const level = document.getElementById("level-select");
+      opts.levels.forEach((l) => level.add(new Option(`${l.name} (${l.value})`, String(l.value))));
+      // default to the lowest level shown first; keep the order Public -> Restricted
+    }
+
+    async function loadDocuments() {
+      const res = await fetch("/api/documents");
+      if (!res.ok) {
+        const data = await res.json();
+        showError(data.error || "Could not load documents.");
+        return;
+      }
+      renderDocuments((await res.json()).documents);
+    }
+
+    function renderDocuments(docs) {
+      const tbody = document.getElementById("docs-tbody");
+      tbody.innerHTML = "";
+
+      if (docs.length === 0) {
+        const tr = document.createElement("tr");
+        const td = cell("No documents available for your role.");
+        td.colSpan = 6;
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+        return;
+      }
+
+      docs.forEach((d) => {
+        const tr = document.createElement("tr");
+        tr.appendChild(cell(d.title));
+        tr.appendChild(cell(d.department));
+        tr.appendChild(cell(`${d.confidentiality_name} (${d.confidentiality_level})`));
+        tr.appendChild(cell(d.uploaded_by || "Built-in dataset"));
+        tr.appendChild(cell(d.uploaded_at ? d.uploaded_at.slice(0, 10) : "—"));
+
+        const actions = document.createElement("td");
+        if (d.can_delete) {
+          const btn = document.createElement("button");
+          btn.className = "danger-btn";
+          btn.textContent = "Delete";
+          btn.addEventListener("click", () => deleteDocument(d));
+          actions.appendChild(btn);
+        }
+        tr.appendChild(actions);
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function deleteDocument(d) {
+      if (!confirm(`Delete "${d.title}"? It will be removed from search immediately.`)) return;
+      const res = await fetch(`/api/documents/${encodeURIComponent(d.doc_id)}`, { method: "DELETE" });
+      const data = await res.json();
+      if (!res.ok) { showError(data.error || "Could not delete document."); return; }
+      loadDocuments();
+    }
+
+    function readAsBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result).split(",")[1] || "");
+        reader.onerror = () => reject(new Error("Could not read the file."));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    document.getElementById("upload-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const file = document.getElementById("file-input").files[0];
+      if (!file) return;
+
+      if (file.size > MAX_BYTES) {
+        setUploadMessage("That file is larger than 2 MB.", false);
+        return;
+      }
+
+      const btn = document.getElementById("upload-btn");
+      btn.disabled = true;
+      setUploadMessage("Uploading and indexing...", true);
+
+      try {
+        const payload = {
+          filename: file.name,
+          content_base64: await readAsBase64(file),
+          title: document.getElementById("title-input").value.trim(),
+          department: document.getElementById("department-select").value,
+          confidentiality_level: Number(document.getElementById("level-select").value),
+        };
+        const res = await fetch("/api/documents", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          setUploadMessage(data.error || "Upload failed.", false);
+        } else {
+          setUploadMessage(`"${data.title}" uploaded and indexed (${data.chunks} chunk${data.chunks === 1 ? "" : "s"}). You can ask questions about it now.`, true);
+          document.getElementById("upload-form").reset();
+          loadDocuments();
+        }
+      } catch (err) {
+        setUploadMessage(err.message || "Upload failed.", false);
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+      await fetch("/api/logout", { method: "POST" });
+      window.location.href = "/";
+    });
+
+    (async function init() {
+      await loadUser();
+      await Promise.all([loadOptions(), loadDocuments()]);
+    })();
+  </script>
+</body>
+</html>
